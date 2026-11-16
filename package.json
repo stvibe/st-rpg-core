@@ -1,0 +1,18 @@
+{
+  "name": "st-rpg-core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/model.test.js tests/store.test.js",
+    "test:browser": "node --test tests/browser.test.js",
+    "check": "node --check index.js && node --check src/model.js && node --check src/store.js && node --check src/hud.js && node --check src/app.js",
+    "test:upstream": "node tests/upstream-smoke.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.58.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

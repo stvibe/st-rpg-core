@@ -1,0 +1,27 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>RPG Core contract harness</title>
+<link rel="stylesheet" href="../style.css"><body><p>Изолированный стенд: ST API заменены проверяемым контрактным адаптером.</p>
+<script type="module">
+import { fixture } from './fixture.js';
+import { createState } from '../src/model.js';
+const f = fixture();
+const saved = localStorage.getItem('rpg-harness');
+if (saved) {
+    const data = JSON.parse(saved);
+    for (const [key, value] of data.metadata) f.metadata.set(key, value);
+    Object.assign(f.settings, data.settings);
+} else {
+    const state = createState('test-campaign');
+    state.private.worldFacts = ['SECRET_WORLD']; state.private.npcKnowledge.vivi = ['SECRET_NPC'];
+    f.metadata.get('A').rpgCore = state;
+}
+f.setSave(async () => localStorage.setItem('rpg-harness', JSON.stringify({metadata: [...f.metadata], settings: f.settings})));
+globalThis.SillyTavern = { getContext: f.getContext };
+const entry = await import('../index.js');
+globalThis.harness = {
+    f, entry,
+    switchTo: async key => { f.switchTo(key); await f.eventSource.emit('CHAT_CHANGED'); },
+    emit: (...args) => f.eventSource.emit(...args),
+    getPrompt: () => f.prompts.get('rpg-core-state-v1')?.value,
+};
+await f.eventSource.emit('APP_READY');
+</script></body></html>

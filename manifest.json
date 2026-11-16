@@ -1,0 +1,11 @@
+{
+  "display_name": "RPG Core + HUD",
+  "loading_order": 50,
+  "js": "index.js",
+  "css": "style.css",
+  "author": "stvibe",
+  "version": "0.1.0",
+  "homePage": "https://github.com/stvibe/st-rpg-core",
+  "minimum_client_version": "1.19.0",
+  "hooks": {"disable": "onDisable", "enable": "onEnable"}
+}

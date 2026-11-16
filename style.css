@@ -1,0 +1,30 @@
+#rpg-core-hud {
+    --rpg-bg: #18212d; --rpg-border: #62788e; --rpg-text: #f3f6fa;
+    position: fixed; right: 12px; bottom: 72px; z-index: 1500;
+    width: min(430px, calc(100vw - 24px)); color: var(--rpg-text);
+    background: var(--rpg-bg); border: 1px solid var(--rpg-border); border-radius: 12px;
+    box-shadow: 0 8px 30px #0008; font: 14px/1.5 system-ui, sans-serif;
+}
+#rpg-core-hud * { box-sizing: border-box; }
+#rpg-core-hud header { display: flex; align-items: center; justify-content: space-between; padding: 8px; gap: 8px; }
+#rpg-core-hud .rpg-clock { font-size: 12px; }
+#rpg-core-body { max-height: 65vh; overflow: auto; padding: 0 12px 12px; }
+#rpg-core-body[hidden] { display: none; }
+#rpg-core-hud p { margin: 8px 0; }
+#rpg-core-hud .rpg-status { font-size: 12px; color: #bfcee0; }
+#rpg-core-hud .rpg-error { color: #ffb5ac; }
+#rpg-core-hud .rpg-tabs { display: flex; gap: 4px; flex-wrap: wrap; margin: 8px 0; }
+#rpg-core-hud button { font: inherit; color: var(--rpg-text); background: #293c50; border: 1px solid var(--rpg-border); border-radius: 6px; padding: 6px 10px; cursor: pointer; margin: 3px 2px; }
+#rpg-core-hud button[aria-selected="true"] { background: #365d80; border-color: #a5d7ff; }
+#rpg-core-hud :focus-visible { outline: 3px solid #97d8ff; outline-offset: 2px; }
+#rpg-core-hud :disabled { opacity: .6; cursor: wait; }
+#rpg-core-hud fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+#rpg-core-hud .rpg-field { display: flex; flex-direction: column; gap: 4px; margin: 8px 0; }
+#rpg-core-hud input, #rpg-core-hud textarea { font: inherit; color: var(--rpg-text); background: #101823; border: 1px solid var(--rpg-border); border-radius: 4px; padding: 8px; max-width: 100%; width: 100%; }
+#rpg-core-hud textarea { min-height: 80px; resize: vertical; }
+#rpg-core-hud input[type="checkbox"] { width: 20px; height: 20px; }
+@media (max-width: 600px) { #rpg-core-hud { right: 6px; bottom: 72px; width: calc(100vw - 12px); } #rpg-core-body { max-height: 60vh; } }
+#rpg-core-hud .rpg-card { background: #101823; border: 1px solid #435b72; border-radius: 8px; padding: 10px; margin: 8px 0; }
+#rpg-core-hud .rpg-module-summary h3 { font-size: 14px; margin: 12px 0 4px; }
+#rpg-core-hud details { margin: 12px 0; }
+#rpg-core-hud summary { cursor: pointer; padding: 6px 0; }
